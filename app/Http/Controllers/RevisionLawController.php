@@ -25,7 +25,7 @@ class RevisionLawController extends Controller
      */
     public function create()
     {
-        //
+        return view('revision_law.create');
     }
 
     /**
@@ -36,7 +36,13 @@ class RevisionLawController extends Controller
      */
     public function store(StoreRevisionLawRequest $request)
     {
-        //
+        // RevisionLaw::create($request->all());
+        $revisionLaw = new RevisionLaw();
+        $revisionLaw->law_id = 1;
+        $revisionLaw->content = $request->content;
+        $revisionLaw->save();
+        
+        return back();
     }
 
     /**

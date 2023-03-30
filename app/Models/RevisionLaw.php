@@ -9,6 +9,11 @@ class RevisionLaw extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'law_id',
+        'content',
+    ];
+
     /**
      * 法律とリレーション
      * 
