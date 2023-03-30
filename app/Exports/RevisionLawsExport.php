@@ -12,6 +12,6 @@ class RevisionLawsExport implements FromCollection
     */
     public function collection()
     {
-        return RevisionLaw::all();
+        return RevisionLaw::where('id', 52)->get(['content']);
     }
 }
