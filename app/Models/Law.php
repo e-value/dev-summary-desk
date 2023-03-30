@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Law extends Model
 {
     use HasFactory;
+
+    /**
+     * 法改正情報とリレーション
+     */
+    public function revisionLaws()
+    {
+        return $this->hasMany(RevisionLaw::class);
+    }
 }
