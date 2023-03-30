@@ -5,3 +5,4 @@
 @endforeach
 
 <a href="{{route('revisionLaws.create')}}">法改正情報作成</a>
+<a href="{{route('revisionLaws.export')}}">エクスポート</a>
