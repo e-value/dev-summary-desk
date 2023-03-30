@@ -16,4 +16,12 @@ class Law extends Model
     {
         return $this->hasMany(RevisionLaw::class);
     }
+
+    /**
+     * 方分類とリレーション
+     */
+    public function category()
+    {
+        return $this->belongsTo(LawCategory::class);
+    }
 }
