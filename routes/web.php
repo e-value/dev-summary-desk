@@ -21,7 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// トップページ記載
 Route::get('top', TopController::class)->name('top');
+
 // 法律
 Route::resource('laws', LawController::class);
 
