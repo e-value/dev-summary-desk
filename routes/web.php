@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TopController;
 use App\Http\Controllers\LawController;
 use App\Http\Controllers\RevisionLawController;
 use App\Http\Controllers\ExportRevisionLawController;
@@ -20,6 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('top', TopController::class)->name('top');
 // 法律
 Route::resource('laws', LawController::class);
 
