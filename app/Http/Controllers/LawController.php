@@ -15,7 +15,9 @@ class LawController extends Controller
      */
     public function index()
     {
-        //
+        $laws = Law::all();
+
+        return view('law.index', compact('laws'));
     }
 
     /**
@@ -47,7 +49,7 @@ class LawController extends Controller
      */
     public function show(Law $law)
     {
-        //
+        return view('law.show', compact('law'));
     }
 
     /**
