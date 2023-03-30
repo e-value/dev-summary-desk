@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LawController;
 use App\Http\Controllers\RevisionLawController;
+use App\Http\Controllers\ExportRevisionLawController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,5 @@ Route::get('/', function () {
 Route::resource('laws', LawController::class);
 
 // 法律情報
+Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
 Route::resource('revisionLaws', RevisionLawController::class);
