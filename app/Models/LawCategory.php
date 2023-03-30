@@ -16,6 +16,6 @@ class LawCategory extends Model
      */
     public function laws()
     {
-        return $this->hasMany(Law::class);
+        return $this->hasMany(Law::class, 'category_id');
     }
 }
