@@ -6,6 +6,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use App\Models\Law;
+use App\Models\LawCategory;
+use App\Models\LawCateogry;
 
 class LawSeeder extends Seeder
 {
@@ -24,11 +26,17 @@ class LawSeeder extends Seeder
             'e条',
         ];
 
-        foreach($names as $name)
+        $categories = LawCategory::all();
+        foreach($categories as $category)
         {
-            Law::create([
-                'name' => $name
-            ]);
+            foreach($names as $name)
+            {
+                Law::create([
+                    'category_id' => $category->id,
+                    'name' => $category->name.'_'.$name
+                ]);
+            }
         }
+        
     }
 }

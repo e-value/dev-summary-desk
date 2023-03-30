@@ -19,7 +19,7 @@ class RevisionLawSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 0; $i<5; $i++)
+        for($i = 0; $i<25; $i++)
         {
             RevisionLaw::factory(10)->create([
                 'law_id' => $i+1,
