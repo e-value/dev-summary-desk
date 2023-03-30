@@ -12,8 +12,9 @@ use Faker\Provider\DateTime;
 class RevisionLawSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
+     * 
+     * idが1~5の法律それぞれに対して、改正情報を10個登録する。
+     * 
      * @return void
      */
     public function run()
