@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LawController;
+use App\Http\Controllers\RevisionLawController;
+use App\Http\Controllers\ExportRevisionLawController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// 法律
+Route::resource('laws', LawController::class);
+
+// 法律情報
+Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
+Route::resource('revisionLaws', RevisionLawController::class);
