@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\LawCategory;
+use App\Models\Law;
+
 class TopController extends Controller
 {
     /**
@@ -14,6 +17,7 @@ class TopController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('top');
+        $law_categories = LawCategory::all();
+        return view('top', compact('law_categories'));
     }
 }
