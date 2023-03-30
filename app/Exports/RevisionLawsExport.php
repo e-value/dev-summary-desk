@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\RevisionLaw;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class RevisionLawsExport implements FromCollection
@@ -11,6 +12,6 @@ class RevisionLawsExport implements FromCollection
     */
     public function collection()
     {
-        //
+        return RevisionLaw::all();
     }
 }
