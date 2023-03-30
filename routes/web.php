@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LawController;
+use App\Http\Controllers\RevisionLawController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// 法律
+Route::resource('laws', LawController::class);
+
+// 法律情報
+Route::resource('revisionLaws', RevisionLawController::class);
