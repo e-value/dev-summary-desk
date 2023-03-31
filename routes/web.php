@@ -30,3 +30,7 @@ Route::resource('laws', LawController::class);
 // 法律情報
 Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
 Route::resource('revisionLaws', RevisionLawController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
