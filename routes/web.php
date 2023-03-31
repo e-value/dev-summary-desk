@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\LawController;
 use App\Http\Controllers\RevisionLawController;
@@ -23,7 +25,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// トップページ記載
+// ユーザー認証
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+// トップページ
 Route::get('top', TopController::class)->name('top');
 
 // 法律
@@ -32,7 +39,3 @@ Route::resource('laws', LawController::class);
 // 法律情報
 Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
 Route::resource('revisionLaws', RevisionLawController::class);
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
