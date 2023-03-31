@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreLawRequest;
 use App\Http\Requests\UpdateLawRequest;
 use App\Models\Law;
 
 class LawController extends Controller
 {
+    public function search(Request $request)
+    {
+        dd($request->all());
+    }
+
     /**
      * Display a listing of the resource.
      *

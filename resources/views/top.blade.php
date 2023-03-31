@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="" method="get">
+<form action="{{ route('laws.search') }}" method="get">
 @foreach($law_categories as $law_category)
 <h3>{{ $law_category->name }}</h2>
     <input type="checkbox" id="law_category_{{$law_category->id}}" value="{{ $law_category->id }}">

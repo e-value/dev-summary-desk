@@ -33,6 +33,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // トップページ
 Route::get('top', TopController::class)->name('top');
 
+// 法律検索
+Route::get('laws/search', [LawController::class, 'search'])->name('laws.search');
+
 // 法律
 Route::resource('laws', LawController::class);
 
