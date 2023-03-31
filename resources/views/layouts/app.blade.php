@@ -79,14 +79,33 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
         $(function(){
-            $('input[type=checkbox][name=law_category_1]').change(function() {
+            $('input[type=checkbox][id^="law_category_"]').change(function() {
                 if ($(this).is(':checked')) {
-                    $('.laws').show();
+                    var law_category_id = $(this).attr('id').substr(13);
+                    console.log(law_category_id);
+                    var laws_belongs_to_category_id = '.laws_belongs_to_category_' + law_category_id
+                    $(laws_belongs_to_category_id).show();
                 }else {
-                    $('.laws').hide();
+                    var law_category_id = $(this).attr('id').substr(13);
+                    console.log(law_category_id);
+                    var laws_belongs_to_category_id = '.laws_belongs_to_category_' + law_category_id
+                    $(laws_belongs_to_category_id).hide();
+                    var category_id_law_ids = 'input[name="category_id_' + law_category_id +'_law_ids[]"]'
+                    console.log(category_id_law_ids)
+                    $(category_id_law_ids).prop('checked', false);
                 }
             });
         });
+        $(function() {
+            $('#law_search').on('click', function() {
+                var lawIds = [];
+                
+                $('input[name="law_ids[]"]:checked').each(function() {
+                    lawIds.push($(this).val());
+                });
+                console.log(lawIds);
+            })
+        })
     </script>
 </body>
 </html>
