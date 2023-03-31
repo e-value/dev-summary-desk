@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <title>Summary-Desk</title>
-</head>
-
-<body>
-
-    <h1>Summary-Desk</h1>
+@section('content')
 
     @foreach($law_categories as $law_category)
         <h2>{{ $law_category->name }}</h2>
@@ -23,19 +13,4 @@
         </div>
     @endforeach
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script>
-        $(function(){
-            $('input[type=checkbox][name=law_category_1]').change(function() {
-                if ($(this).is(':checked')) {
-                    $('.laws').show();
-                }else {
-                    $('.laws').hide();
-                }
-            });
-        });
-    </script>
-
-</body>
-
-</html>
+@endsection
