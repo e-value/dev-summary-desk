@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\LawController;
 use App\Http\Controllers\RevisionLawController;
