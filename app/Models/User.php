@@ -41,4 +41,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * 契約している法律
+     * Lawテーブルと多対多
+     */
+    public function contractedLaws()
+    {
+        return $this->belongsToMany(Law::class, 'contracted_laws', 'user_id', 'law_id');
+    }
 }

@@ -24,4 +24,13 @@ class Law extends Model
     {
         return $this->belongsTo(LawCategory::class);
     }
+
+    /**
+     * 契約しているユーザー
+     * Userテーブルと多対多
+     */
+    public function contractedUsers()
+    {
+        return $this->belongsToMany(User::class, 'contracted_laws', 'law_id', 'user_id');
+    }
 }
