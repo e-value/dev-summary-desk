@@ -37,10 +37,10 @@ Route::group(['middleware' => 'auth'], function() {
     // 法律
     Route::resource('laws', LawController::class);
 
-    // 法律改正
-    Route::resource('revisionLaws', RevisionLawController::class);
-
-    // 法改正エクスポート
-    Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
-
+    Route::group(['prefix' => 'revisionLaws'], function() {
+        // 法律改正
+        Route::resource('revisionLaws', RevisionLawController::class);
+        // 法改正エクスポート
+        Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
+    });
 });
