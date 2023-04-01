@@ -11,7 +11,10 @@ class TopController extends Controller
     public function __invoke(Request $request)
     {
         $user = Auth()->user();
-        $law_categories = $user->contractedLawCategories;
+
+        // ※注意！
+        // カテゴリーが重複するのでuniqueにする
+        $law_categories = $user->contractedLawCategories->unique();
         
         $query = RevisionLaw::query();
 
