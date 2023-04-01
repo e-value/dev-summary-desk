@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('revisionLaws.search') }}" method="get">
+<form action="{{ route('top') }}" method="get">
     <div class="form-group">
         @foreach($law_categories as $law_category)
             <div class="form-check form-check-inline">

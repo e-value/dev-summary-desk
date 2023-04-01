@@ -10,14 +10,7 @@ use App\Models\RevisionLaw;
 
 class TopController extends Controller
 {
-    public function index()
-    {
-        $law_categories = LawCategory::all();
-        $revision_laws = RevisionLaw::paginate(20);
-        return view('top', compact('law_categories','revision_laws'));
-    }
-
-    public function search(Request $request)
+    public function index(Request $request)
     {
         $law_categories = LawCategory::all();
         

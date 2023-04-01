@@ -32,9 +32,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // トップページ
 Route::get('top', [TopController::class, 'index'])->name('top');
-// 法律検索
-Route::get('revisionLaws/search', [TopController::class, 'search'])->name('revisionLaws.search');
-
 
 
 // 法律
