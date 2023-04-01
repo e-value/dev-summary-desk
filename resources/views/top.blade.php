@@ -42,6 +42,6 @@
         </tbody>
     </table>
     <div class="d-flex">
-        {{ $revision_laws->links() }}
+        {{ $revision_laws->appends(request()->query())->links() }}
     </div>
 @endsection
