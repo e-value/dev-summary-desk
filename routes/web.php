@@ -28,10 +28,14 @@ Route::get('/', function () {
 // ユーザー認証
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])
+    ->middleware('auth')
+    ->name('home');
 
 // トップページ
-Route::get('top', TopController::class)->name('top');
+Route::get('top', TopController::class)
+    ->middleware('auth')
+    ->name('top');
 
 // 法律
 Route::resource('laws', LawController::class);
