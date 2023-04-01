@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
 use App\Models\LawCategory;
 use App\Models\Law;
 use App\Models\RevisionLaw;
@@ -12,7 +13,8 @@ class TopController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $law_categories = LawCategory::all();
+        $user = User::findOrFail(1);
+        $law_categories = $user->contractedLawCategories;
         
         $query = RevisionLaw::query();
 
