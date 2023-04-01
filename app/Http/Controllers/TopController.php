@@ -10,7 +10,7 @@ use App\Models\RevisionLaw;
 
 class TopController extends Controller
 {
-    public function index(Request $request)
+    public function __invoke(Request $request)
     {
         $law_categories = LawCategory::all();
         

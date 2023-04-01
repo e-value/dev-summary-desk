@@ -31,7 +31,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // トップページ
-Route::get('top', [TopController::class, 'index'])->name('top');
+Route::get('top', TopController::class)->name('top');
 
 
 // 法律
