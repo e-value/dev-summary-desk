@@ -29,16 +29,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
+    
+    // ログアウト後のページ
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // トップページ
     Route::get('top', TopController::class)->name('top');
 
-    // 法律
+    // 法律crud
     Route::resource('laws', LawController::class);
 
     Route::group(['prefix' => 'revisionLaws'], function() {
-        // 法律改正
+        // 法律改正crud
         Route::resource('revisionLaws', RevisionLawController::class);
         // 法改正エクスポート
         Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
