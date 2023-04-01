@@ -31,14 +31,16 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // トップページ
-Route::get('top', TopController::class)->name('top');
-
+Route::get('top', [TopController::class, 'index'])->name('top');
 // 法律検索
-Route::get('laws/search', [LawController::class, 'search'])->name('laws.search');
+Route::get('revisionLaws/search', [TopController::class, 'search'])->name('revisionLaws.search');
+
+
 
 // 法律
 Route::resource('laws', LawController::class);
 
 // 法律情報
 Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
+
 Route::resource('revisionLaws', RevisionLawController::class);

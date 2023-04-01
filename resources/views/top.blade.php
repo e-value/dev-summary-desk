@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('laws.search') }}" method="get">
+<form action="{{ route('revisionLaws.search') }}" method="get">
 @foreach($law_categories as $law_category)
 <h3>{{ $law_category->name }}</h2>
     <input type="checkbox" id="law_category_{{$law_category->id}}" value="{{ $law_category->id }}">
@@ -20,4 +20,9 @@
 
     <button id="law_search" class="btn btn-primary">検索</button>
 </form>
+
+    @foreach($revision_laws as $revision_law)
+        <p>{{ $revision_law->id }}</p>
+    @endforeach
+    
 @endsection
