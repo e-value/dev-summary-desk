@@ -20,9 +20,27 @@
 
     <button id="law_search" class="btn btn-primary">検索</button>
 </form>
-
-    @foreach($revision_laws as $revision_law)
-        <p>{{ $revision_law->id }}</p>
-    @endforeach
-    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>法律名</th>
+                <th>発行日</th>
+                <th>施行日</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($revision_laws as $revision_law)
+            <tr>
+                <td>{{ $revision_law->id }}</td>
+                <td>{{ $revision_law->law->name }}</td>
+                <td>{{ $revision_law->issue_date }}</td>
+                <td>{{ $revision_law->enforcement_date }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    <div class="d-flex">
+        {{ $revision_laws->links() }}
+    </div>
 @endsection

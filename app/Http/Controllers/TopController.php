@@ -31,7 +31,7 @@ class TopController extends Controller
             });
         }
 
-        $revision_laws = $query->paginate(50);
+        $revision_laws = $query->paginate(10);
 
         return view('top', compact('law_categories','revision_laws'));
     }
