@@ -28,21 +28,19 @@ Route::get('/', function () {
 // ユーザー認証
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])
-    ->middleware('auth')
-    ->name('home');
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// トップページ
-Route::get('top', TopController::class)
-    ->middleware('auth')
-    ->name('top');
+    // トップページ
+    Route::get('top', TopController::class)->name('top');
 
-// 法律
-Route::resource('laws', LawController::class);
+    // 法律
+    Route::resource('laws', LawController::class);
 
-// 法律改正
-Route::resource('revisionLaws', RevisionLawController::class);
+    // 法律改正
+    Route::resource('revisionLaws', RevisionLawController::class);
 
-// 法改正エクスポート
-Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
+    // 法改正エクスポート
+    Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
 
+});
