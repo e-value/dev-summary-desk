@@ -11,6 +11,7 @@ class TopController extends Controller
     {
         $user = Auth()->user();
 
+        // 法分類: チェックボックスの選択肢
         // ※注意！
         // カテゴリーが重複するのでuniqueにする
         $law_categories = $user->contractedLawCategories->unique();
