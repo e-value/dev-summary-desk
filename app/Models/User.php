@@ -50,4 +50,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Law::class, 'contracted_laws', 'user_id', 'law_id');
     }
+
+    /**
+     * 契約している法律の法分類とリレーション
+     */
+    public function contractedLawCategories()
+    {
+        return $this->belongsToMany(LawCategory::class, 'contracted_laws', 'user_id', 'category_id');
+    }
 }
