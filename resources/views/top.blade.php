@@ -3,20 +3,25 @@
 @section('content')
 
 <form action="{{ route('top') }}" method="get">
-    <input class="form-check-input" type="checkbox">
+    <input class="form-check-input" type="checkbox" name="issue_date" id="issue_date" value="issue_date">
     <label class="form-check-label fs-5">施行日</label>
 
-    <input class="form-check-input" type="checkbox">
+    <input class="form-check-input" type="checkbox" name="enforcement_date" id="enforcement_date" value="enforcement_date">
     <label class="form-check-label fs-5">公布日</label>
 
-    <div class="form-grop">
-        <input type="date" id="from_date" name="from_date">
-    </div>
+    <div class="form-group">
+        <div class="form-check form-check-inline">
+            <input type="date" id="from_date" name="from_date">
+            <input type="date" id="until_date" name="until_date">
+        </div>
 
-    <div class="form-grop">
-        <input type="date" id="until_date" name="until_date">
-    </div>
+        <div class="form-check form-check-inline">
+            <label for="">フリーワード</label>
+            <input type="text" name="keyword" value="">
+        </div>
 
+    </div>
+    
     <div class="form-group">
         @foreach($law_categories as $law_category)
             <div class="form-check form-check-inline">
