@@ -17,6 +17,7 @@ class TopController extends Controller
         // 改正情報を取得
         $query = RevisionLaw::whereIn('law_id', $contractedLawIds);
 
+        // チェックをした法律を検索
         if(is_array($request->input('law_ids'))) {
             $query->where(function($query) use($request){
                 foreach($request->input('law_ids') as $law_id){
