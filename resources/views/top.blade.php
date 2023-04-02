@@ -25,18 +25,25 @@
         <thead>
             <tr>
                 <th>id</th>
-                <th>法律名</th>
-                <th>発行日</th>
+                <th>公布日</th>
                 <th>施行日</th>
+                <th>法分類</th>
+                <th>法律名</th>
+                <th>ステータス</th>
+                <th>ポイント</th>
+                
             </tr>
         </thead>
         <tbody>
             @foreach($revision_laws as $revision_law)
             <tr>
                 <td>{{ $revision_law->id }}</td>
-                <td>{{ $revision_law->law->name }}</td>
                 <td>{{ $revision_law->issue_date }}</td>
                 <td>{{ $revision_law->enforcement_date }}</td>
+                <td>{{ $revision_law->law->category->name }}</td>
+                <td>{{ $revision_law->law->name }}</td>
+                <td>{{ $revision_law->status }}</td>
+                <td>{{ $revision_law->point }}</td>
             </tr>
             @endforeach
         </tbody>
