@@ -21,10 +21,6 @@ use App\Http\Controllers\ExportRevisionLawController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // ユーザー認証
 Auth::routes();
 
@@ -42,4 +38,8 @@ Route::group(['middleware' => 'auth'], function() {
         // 法改正エクスポート
         Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
     });
+});
+
+Route::get('/', function () {
+    return view('welcome');
 });
