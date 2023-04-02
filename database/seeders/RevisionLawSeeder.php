@@ -25,6 +25,9 @@ class RevisionLawSeeder extends Seeder
                 'law_id' => $i+1,
                 'issue_date' => DateTime::dateTimeThisDecade(),
                 'enforcement_date' => DateTime::dateTimeThisDecade(),
+                'status' => '改正',
+                'point' => 'ダミーダミーダミーダミー',
+                'content' => 'ダミーダミーダミーダミー'
             ]);
         }
     }
