@@ -25,6 +25,16 @@ class TopController extends Controller
                 }
             });
         }
+
+        // 日時で検索 from
+        if(!empty($request->from_date)) {
+            $query->whereDate('created_at', '>=', $request->from_date);
+        }
+
+        // 日時で検索 until
+        if(!empty($request->until_date)) {
+            $query->whereDate('created_at', '<=', $request->until_date);
+        }
     
         $revisionLaws = $query->paginate(10);
 
