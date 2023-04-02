@@ -9,7 +9,7 @@ class TopController extends Controller
 {
     public function __invoke(Request $request)
     {
-
+        
         $user = Auth()->user();
 
         // 契約している法律のIDを取得
@@ -44,6 +44,13 @@ class TopController extends Controller
                     $query->orWhere('law_id',$law_id);
                 }
             });
+        }
+
+        // フリーワード検索
+        $keyword = $request->input('keyword');
+        if(!empty($keyword)) {
+            $query->where('point', 'LIKE', "%{$keyword}%")
+                ->orWhere('content', 'LIKE', "%{$keyword}%");
         }
         
         $revisionLaws = $query->paginate(10);
