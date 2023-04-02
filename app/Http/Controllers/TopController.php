@@ -18,15 +18,10 @@ class TopController extends Controller
         // 改正情報を取得
         $query = RevisionLaw::whereIn('law_id', $contractedLawIds);
 
-        // チェックをした法律を検索
-        if(is_array($request->input('law_ids'))) {
-            $query->where(function($query) use($request){
-                foreach($request->input('law_ids') as $law_id){
-                    $query->orWhere('law_id',$law_id);
-                }
-            });
-        }
-
+        // 公布日・施行日で検索
+        // name="search_dates[]" value="issue_date
+        // name="search_dates[]" value="enforcement_date"
+        // どちらか一つにしかチェックは入れられないので、search_datesに入っている値を取得し、カラムに代入
         if($request->input('search_dates')) {
 
             $date_column = $request->input('serach_dates');
@@ -42,6 +37,14 @@ class TopController extends Controller
             }
         }
 
+        // チェックをした法律を検索
+        if(is_array($request->input('law_ids'))) {
+            $query->where(function($query) use($request){
+                foreach($request->input('law_ids') as $law_id){
+                    $query->orWhere('law_id',$law_id);
+                }
+            });
+        }
         
         $revisionLaws = $query->paginate(10);
 
