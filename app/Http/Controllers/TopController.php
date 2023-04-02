@@ -15,8 +15,12 @@ class TopController extends Controller
         // ※注意！
         // カテゴリーが重複するのでuniqueにする
         $law_categories = $user->contractedLawCategories->unique();
-        
-        $query = RevisionLaw::query();
+
+        // 契約している法律のIDを取得
+        $contractedLawIds = $user->contractedLaws()->pluck('laws.id');
+
+        // 改正情報を取得
+        $query = RevisionLaw::whereIn('law_id', $contractedLawIds);
 
         if(is_array($request->input('law_ids'))) {
             $query->where(function($query) use($request){
@@ -25,9 +29,9 @@ class TopController extends Controller
                 }
             });
         }
+    
+        $revisionLaws = $query->paginate(10);
 
-        $revision_laws = $query->paginate(10);
-
-        return view('top', compact('law_categories','revision_laws'));
+        return view('top', compact('law_categories','revisionLaws'));
     }
 }

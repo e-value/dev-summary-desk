@@ -35,20 +35,22 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($revision_laws as $revision_law)
-            <tr>
-                <td>{{ $revision_law->id }}</td>
-                <td>{{ $revision_law->issue_date }}</td>
-                <td>{{ $revision_law->enforcement_date }}</td>
-                <td>{{ $revision_law->law->category->name }}</td>
-                <td>{{ $revision_law->law->name }}</td>
-                <td>{{ $revision_law->status }}</td>
-                <td>{{ $revision_law->point }}</td>
-            </tr>
-            @endforeach
+           
+                @foreach($revisionLaws as $revision_law)
+                    <tr>
+                        <td>{{ $revision_law->id }}</td>
+                        <td>{{ $revision_law->issue_date }}</td>
+                        <td>{{ $revision_law->enforcement_date }}</td>
+                        <td>{{ $revision_law->law->category->name }}</td>
+                        <td>{{ $revision_law->law->name }}</td>
+                        <td>{{ $revision_law->status }}</td>
+                        <td>{{ $revision_law->point }}</td>
+                    </tr>
+                @endforeach
+           
         </tbody>
     </table>
     <div class="d-flex">
-        {{ $revision_laws->appends(request()->query())->links() }}
+        {{ $revisionLaws->appends(request()->query())->links() }}
     </div>
 @endsection
