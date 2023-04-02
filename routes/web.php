@@ -29,9 +29,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
-    
-    // ログアウト後のページ
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // トップページ
     Route::get('top', TopController::class)->name('top');
