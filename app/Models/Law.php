@@ -16,4 +16,21 @@ class Law extends Model
     {
         return $this->hasMany(RevisionLaw::class);
     }
+
+    /**
+     * 方分類とリレーション
+     */
+    public function category()
+    {
+        return $this->belongsTo(LawCategory::class);
+    }
+
+    /**
+     * 契約しているユーザー
+     * Userテーブルと多対多
+     */
+    public function contractedUsers()
+    {
+        return $this->belongsToMany(User::class, 'contracted_laws', 'law_id', 'user_id');
+    }
 }

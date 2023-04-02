@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\StoreLawRequest;
-use App\Http\Requests\UpdateLawRequest;
-use App\Models\Law;
-use App\Models\RevisionLaw;
+use App\Http\Requests\StoreLawCategoryRequest;
+use App\Http\Requests\UpdateLawCategoryRequest;
+use App\Models\LawCategory;
 
-class LawController extends Controller
+class LawCategoryController extends Controller
 {
-    
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +15,7 @@ class LawController extends Controller
      */
     public function index()
     {
-        $laws = Law::all();
-
-        return view('law.index', compact('laws'));
+        //
     }
 
     /**
@@ -36,10 +31,10 @@ class LawController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreLawRequest  $request
+     * @param  \App\Http\Requests\StoreLawCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreLawRequest $request)
+    public function store(StoreLawCategoryRequest $request)
     {
         //
     }
@@ -47,21 +42,21 @@ class LawController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Law  $law
+     * @param  \App\Models\LawCategory  $lawCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Law $law)
+    public function show(LawCategory $lawCategory)
     {
-        return view('law.show', compact('law'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Law  $law
+     * @param  \App\Models\LawCategory  $lawCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Law $law)
+    public function edit(LawCategory $lawCategory)
     {
         //
     }
@@ -69,11 +64,11 @@ class LawController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateLawRequest  $request
-     * @param  \App\Models\Law  $law
+     * @param  \App\Http\Requests\UpdateLawCategoryRequest  $request
+     * @param  \App\Models\LawCategory  $lawCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLawRequest $request, Law $law)
+    public function update(UpdateLawCategoryRequest $request, LawCategory $lawCategory)
     {
         //
     }
@@ -81,10 +76,10 @@ class LawController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Law  $law
+     * @param  \App\Models\LawCategory  $lawCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Law $law)
+    public function destroy(LawCategory $lawCategory)
     {
         //
     }

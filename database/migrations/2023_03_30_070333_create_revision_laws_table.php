@@ -18,11 +18,16 @@ return new class extends Migration
             $table->unsignedBigInteger('law_id')->nullable();
             $table->date('issue_date')->nullable();
             $table->date('enforcement_date')->nullable();
+            $table->string('status')->nullable();
             $table->text('point')->nullable();
             $table->text('content')->nullable();
-
-            $table->foreign('law_id')->references('id')->on('laws')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
+
+            $table->foreign('law_id')
+                    ->references('id')
+                    ->on('laws')
+                    ->cascadeOnUpdate()
+                    ->cascadeOnDelete();
         });
     }
 

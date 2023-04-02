@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TopController;
 use App\Http\Controllers\LawController;
 use App\Http\Controllers\RevisionLawController;
 use App\Http\Controllers\ExportRevisionLawController;
@@ -20,9 +25,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// 法律
-Route::resource('laws', LawController::class);
+// ユーザー認証
+Auth::routes();
 
-// 法律情報
-Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
-Route::resource('revisionLaws', RevisionLawController::class);
+Route::group(['middleware' => 'auth'], function() {
+    
+    // ログアウト後のページ
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    // トップページ
+    Route::get('top', TopController::class)->name('top');
+
+    // 法律crud
+    Route::resource('laws', LawController::class);
+
+    Route::group(['prefix' => 'revisionLaws'], function() {
+        // 法律改正crud
+        Route::resource('revisionLaws', RevisionLawController::class);
+        // 法改正エクスポート
+        Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
+    });
+});
