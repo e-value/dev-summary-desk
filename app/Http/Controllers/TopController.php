@@ -9,6 +9,7 @@ class TopController extends Controller
 {
     public function __invoke(Request $request)
     {
+
         $user = Auth()->user();
 
         // 契約している法律のIDを取得
@@ -26,16 +27,22 @@ class TopController extends Controller
             });
         }
 
-        // 日時で検索 from
-        if(!empty($request->from_date)) {
-            $query->whereDate('created_at', '>=', $request->from_date);
+        if($request->input('search_dates')) {
+
+            $date_column = $request->input('serach_dates');
+
+            // 日時で検索 from
+            if(!empty($request->from_date)) {
+                $query->whereDate($date_column[0], '>=', $request->input('from_date'));
+            }
+
+            // 日時で検索 until
+            if(!empty($request->until_date)) {
+                $query->whereDate($date_column[0], '<=', $request->input('until_date'));
+            }
         }
 
-        // 日時で検索 until
-        if(!empty($request->until_date)) {
-            $query->whereDate('created_at', '<=', $request->until_date);
-        }
-    
+        
         $revisionLaws = $query->paginate(10);
 
         // 法分類: チェックボックスの選択肢に使用

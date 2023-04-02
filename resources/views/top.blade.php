@@ -3,10 +3,10 @@
 @section('content')
 
 <form action="{{ route('top') }}" method="get">
-    <input class="form-check-input" type="checkbox" name="issue_date" id="issue_date" value="issue_date">
+    <input class="form-check-input" type="checkbox" name="search_dates[]" id="issue_date" value="issue_date">
     <label class="form-check-label fs-5">施行日</label>
 
-    <input class="form-check-input" type="checkbox" name="enforcement_date" id="enforcement_date" value="enforcement_date">
+    <input class="form-check-input" type="checkbox" name="search_dates[]" id="enforcement_date" value="enforcement_date">
     <label class="form-check-label fs-5">公布日</label>
 
     <div class="form-group">
