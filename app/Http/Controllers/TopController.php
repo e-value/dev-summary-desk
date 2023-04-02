@@ -11,11 +11,6 @@ class TopController extends Controller
     {
         $user = Auth()->user();
 
-        // 法分類: チェックボックスの選択肢
-        // ※注意！
-        // カテゴリーが重複するのでuniqueにする
-        $law_categories = $user->contractedLawCategories->unique();
-
         // 契約している法律のIDを取得
         $contractedLawIds = $user->contractedLaws()->pluck('laws.id');
 
@@ -32,6 +27,12 @@ class TopController extends Controller
     
         $revisionLaws = $query->paginate(10);
 
-        return view('top', compact('law_categories','revisionLaws'));
+        // 法分類: チェックボックスの選択肢に使用
+        // ※注意！
+        // カテゴリーが重複するのでuniqueにする
+        $law_categories = $user->contractedLawCategories->unique();
+
+
+        return view('top', compact('revisionLaws', 'law_categories'));
     }
 }
