@@ -3,20 +3,25 @@
 @section('content')
 
 <form action="{{ route('top') }}" method="get">
-    <input class="form-check-input" type="checkbox">
+    <input class="form-check-input" type="checkbox" name="search_dates[]" id="issue_date" value="issue_date">
     <label class="form-check-label fs-5">施行日</label>
 
-    <input class="form-check-input" type="checkbox">
+    <input class="form-check-input" type="checkbox" name="search_dates[]" id="enforcement_date" value="enforcement_date">
     <label class="form-check-label fs-5">公布日</label>
 
-    <div class="form-grop">
-        <input type="date" id="from_date" name="from_date">
-    </div>
+    <div class="form-group">
+        <div class="form-check form-check-inline">
+            <input type="date" id="from_date" name="from_date">
+            <input type="date" id="until_date" name="until_date">
+        </div>
 
-    <div class="form-grop">
-        <input type="date" id="until_date" name="until_date">
-    </div>
+        <div class="form-check form-check-inline">
+            <label for="">フリーワード</label>
+            <input type="text" name="keyword" value="">
+        </div>
 
+    </div>
+    
     <div class="form-group">
         @foreach($law_categories as $law_category)
             <div class="form-check form-check-inline">
@@ -35,9 +40,16 @@
 </form>
 
 
+    
+
+
+<form action="{{ route('revisionLaws.export') }}" method="get">
+    <button id="export_revision_laws" class="btn btn-outline-primary">エクスポート</button>
+    @csrf
     <table class="table">
         <thead>
             <tr>
+                <th><input type="checkbox" id="select-all-checkbox"></th>
                 <th>id</th>
                 <th>公布日</th>
                 <th>施行日</th>
@@ -52,6 +64,7 @@
            
                 @foreach($revisionLaws as $revision_law)
                     <tr>
+                        <td><input type="checkbox" name="revision_law_ids[]" value="{{ $revision_law->id }}" class="revision_law-checkbox"></td>
                         <td>{{ $revision_law->id }}</td>
                         <td>{{ $revision_law->issue_date }}</td>
                         <td>{{ $revision_law->enforcement_date }}</td>
@@ -67,4 +80,5 @@
     <div class="d-flex">
         {{ $revisionLaws->appends(request()->query())->links() }}
     </div>
+</form>
 @endsection

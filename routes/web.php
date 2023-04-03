@@ -32,12 +32,11 @@ Route::group(['middleware' => 'auth'], function() {
     // 法律crud
     Route::resource('laws', LawController::class);
 
-    Route::group(['prefix' => 'revisionLaws'], function() {
-        // 法律改正crud
-        Route::resource('revisionLaws', RevisionLawController::class);
-        // 法改正エクスポート
-        Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
-    });
+    // 法改正エクスポート
+    Route::get('revisionLaws/export', [ExportRevisionLawController::class, 'export'])->name('revisionLaws.export');
+
+    // 法律改正crud
+    Route::resource('revisionLaws', RevisionLawController::class);
 });
 
 Route::get('/', function () {
