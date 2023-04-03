@@ -39,6 +39,10 @@
     <button id="law_search" class="btn btn-primary">検索</button>
 </form>
 
+<form action="">
+    <button class="btn btn-outline-primary">エクスポート</button>
+</form>
+
 
     <table class="table">
         <thead>
@@ -58,7 +62,7 @@
            
                 @foreach($revisionLaws as $revision_law)
                     <tr>
-                        <td><input type="checkbox" name="revision_laws[]" class="revision_law-checkbox"></td>
+                        <td><input type="checkbox" name="revision_laws[]" value="{{ $revision_law->id }}" class="revision_law-checkbox"></td>
                         <td>{{ $revision_law->id }}</td>
                         <td>{{ $revision_law->issue_date }}</td>
                         <td>{{ $revision_law->enforcement_date }}</td>
