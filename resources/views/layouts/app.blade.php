@@ -77,5 +77,12 @@
         </main>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+    $(function() {
+            $('#select-all-checkbox').click(function() {
+            $('.revision_law-checkbox').prop('checked', this.checked);
+        });
+    })
+    </script>
 </body>
 </html>

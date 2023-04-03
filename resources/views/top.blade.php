@@ -43,7 +43,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th><input type="checkbox"></th>
+                <th><input type="checkbox" id="select-all-checkbox"></th>
                 <th>id</th>
                 <th>公布日</th>
                 <th>施行日</th>
@@ -58,7 +58,7 @@
            
                 @foreach($revisionLaws as $revision_law)
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" name="revision_laws[]" class="revision_law-checkbox"></td>
                         <td>{{ $revision_law->id }}</td>
                         <td>{{ $revision_law->issue_date }}</td>
                         <td>{{ $revision_law->enforcement_date }}</td>
