@@ -9,7 +9,6 @@ class TopController extends Controller
 {
     public function __invoke(Request $request)
     {
-        
         $user = Auth()->user();
 
         // 契約している法律のIDを取得
@@ -24,7 +23,7 @@ class TopController extends Controller
         // どちらか一つにしかチェックは入れられないので、search_datesに入っている値を取得し、カラムに代入
         if($request->input('search_dates')) {
 
-            $date_column = $request->input('serach_dates');
+            $date_column = $request->input('search_dates');
 
             // 日時で検索 from
             if(!empty($request->from_date)) {
