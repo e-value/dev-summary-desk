@@ -113,11 +113,6 @@
             });
         })
     </script>
-    <script>
-        $(function() {
-            
-        })
-    </script>
 </body>
 
 </html>
