@@ -29,8 +29,11 @@
                 <label class="form-check-label fs-5">{{ $law_category->name }}</label>
                     <div id="laws_belongs_to_category_{{$law_category->id}}" style="display: none;">
                         @foreach($law_category->laws as $law)
-                            <input type="checkbox" name="law_ids[]" value="{{ $law->id }}">
-                            <label class="form-check-label">{{ $law->name }}</label>
+                            {--契約中の法律のみ表示--}
+                            @if($law->isContracted(Auth()->user()->id))
+                                <input type="checkbox" name="law_ids[]" value="{{ $law->id }}">
+                                <label class="form-check-label">{{ $law->name }}</label>
+                            @endif
                         @endforeach
                     </div>
             </div>
