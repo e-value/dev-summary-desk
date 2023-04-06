@@ -33,4 +33,15 @@ class Law extends Model
     {
         return $this->belongsToMany(User::class, 'contracted_laws', 'law_id', 'user_id');
     }
+
+    /**
+     * 法律が契約されているか
+     * 
+     * @param int $userId
+     * @return bool
+     */
+    public function isContracted(int $userId): bool
+    {
+        return $this->contractedUsers()->where('user_id', $userId)->exists();
+    }
 }
